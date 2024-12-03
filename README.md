@@ -26,7 +26,7 @@ This PowerShell script allows you to migrate an app registration from one tenant
     ```powershell
     .\appreg.ps1
     ```
-Please note, you will log in with the user credentials belonging to the tenant you would like to recreate the application registration in, you will also need Entra tenant admin priviledges to create the app resigrtation and neccisary secrets.
+Please note, you will log in with the user credentials belonging to the tenant you would like to recreate the application registration in, you will also need Entra tenant admin priviledges to create the app registration and secrets.
 
 ## Script Details
 
@@ -34,9 +34,10 @@ The script performs the following steps:
 
 1. Connects to the tenant using the Microsoft Graph PowerShell SDK.
 2. Reads the app registration manifest JSON file.
-3. Extracts necessary properties from the manifest.
-4. Converts properties to the correct types as required by the Microsoft Graph API.
-5. Creates a new app registration in the target tenant with the extracted properties.
-6. Outputs the details of the new app registration.
+3. Extracts necessary properties from the manifest such as secrets and redirect URIs.
+4. This script will recreate the secrets with a start day of the time the script was ran, and will expire 6 months after creation.
+5. Converts properties to the correct types as required by the Microsoft Graph API.
+6. Creates a new app registration in the target tenant with the extracted properties.
+7. Outputs the details of the new app registration.
 
 
