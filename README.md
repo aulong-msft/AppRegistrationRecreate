@@ -16,11 +16,13 @@ This PowerShell script allows you to migrate an app registration from one tenant
 
 ## Usage
 
+1. Navigate to your old app registration -> Manage -> Manifest and download that manifest file for your application registration you want to recreate.
+   
 1. Update the follwing fields in the powershell script
  - "TENANT ID"
  - "PATH TO OLD APP MANIFEST
 
-2. Run the script:
+1. Run the script:
     ```powershell
     .\YourScript.ps1
     ```
@@ -38,46 +40,4 @@ The script performs the following steps:
 5. Creates a new app registration in the target tenant with the extracted properties.
 6. Outputs the details of the new app registration.
 
-## Example Manifest
 
-Here is an example of the JSON manifest that the script can process:
-
-```json
-{
-    "id": "4111c311-bcf7-4d6b-a919-6b016aab8a61",
-    "appId": "fe1f72fa-dde3-48fc-a033-615666a7ab50",
-    "displayName": "AudreysNewApp",
-    "description": null,
-    "signInAudience": "AzureADMyOrg",
-    "publisherDomain": "AudreysAZExam.onmicrosoft.com",
-    "api": {
-        "acceptMappedClaims": null,
-        "knownClientApplications": [],
-        "requestedAccessTokenVersion": null,
-        "oauth2PermissionScopes": [],
-        "preAuthorizedApplications": []
-    },
-    "appRoles": [],
-    "info": {
-        "logoUrl": null,
-        "marketingUrl": null,
-        "privacyStatementUrl": null,
-        "supportUrl": null,
-        "termsOfServiceUrl": null
-    },
-    "keyCredentials": [],
-    "passwordCredentials": [
-        {
-            "customKeyIdentifier": null,
-            "displayName": "Provider SP secret",
-            "endDateTime": "2023-02-22T19:39:55.621Z",
-            "hint": "SiY",
-            "keyId": "88d97a80-d72f-4892-b6c6-84e3fe2ff4b8",
-            "secretText": null,
-            "startDateTime": "2022-08-22T18:39:55.621Z"
-        }
-    ],
-    "web": {
-        "redirectUris": []
-    }
-}
