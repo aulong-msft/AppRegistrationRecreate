@@ -34,7 +34,7 @@ The script performs the following steps:
 
 1. Connects to the tenant using the Microsoft Graph PowerShell SDK.
 1. Reads the app registration manifest JSON file.
-1. Extracts necessary properties from the manifest such as secrets and redirect URIs.
+1. Extracts necessary properties from the manifest.
 1. Converts properties to the correct types as required by the Microsoft Graph API.
 1. Creates a new app registration in the target tenant with the extracted properties.
 1. Outputs the details of the new app registration.
