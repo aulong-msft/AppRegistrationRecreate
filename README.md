@@ -16,9 +16,10 @@ This PowerShell script allows you to migrate an app registration from one tenant
 
 ## Usage
 
-1. Connect to the tenant:
+1. Update the follwing fields in the powershell script
     ```powershell
-    Connect-MgGraph -Scopes "Application.ReadWrite.All"
+    "TENANT ID"
+ "PATH TO OLD APP MANIFEST
     ```
 
 2. Run the script:
