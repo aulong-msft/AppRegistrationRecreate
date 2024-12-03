@@ -41,6 +41,9 @@ The script performs the following steps:
 
 ## Notes
 - Ensure that you have the necessary permissions to create and manage app registrations in the target tenant.
+- This script does not handle optional claims in token congifuration section.
+- This script does not recreate scopes defined by the API or Authorized client apps.
+- You will need to set an app owner after creation.
 - The script sets the StartDateTime for the PasswordCredentials to today's date and the EndDateTime to 6 months from the start date.
 - The publisherDomain property is read-only and cannot be set during app creation.
 - If your app uses certificates for authentication, you will need to handle the keyCredentials property properly. This might involve uploading certificates to the new app registration.
