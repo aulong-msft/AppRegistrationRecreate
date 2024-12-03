@@ -1,6 +1,6 @@
 # App Registration Migration Script
 
-This PowerShell script allows you to migrate an app registration from one tenant to another using the Microsoft Graph PowerShell SDK. The script reads an app registration manifest in JSON format and recreates the app registration in the target tenant.
+This PowerShell script allows you to recreate an app registration from one tenant to another using the Microsoft Graph PowerShell SDK. The script reads an app registration manifest in JSON format and recreates the app registration in the target tenant.
 
 ## Prerequisites
 
