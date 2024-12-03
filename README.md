@@ -24,10 +24,9 @@ This PowerShell script allows you to migrate an app registration from one tenant
 
 1. Run the script:
     ```powershell
-    .\YourScript.ps1
+    .\appreg.ps1
     ```
-
-    Replace `YourScript.ps1` with the name of your PowerShell script file.
+Please note, you will log in with the user credentials belonging to the tenant you would like to recreate the application registration in, you will also need Entra tenant admin priviledges to create the app resigrtation and neccisary secrets.
 
 ## Script Details
 
