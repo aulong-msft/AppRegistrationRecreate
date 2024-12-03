@@ -35,7 +35,12 @@ The script performs the following steps:
 1. Connects to the tenant using the Microsoft Graph PowerShell SDK.
 2. Reads the app registration manifest JSON file.
 3. Extracts necessary properties from the manifest such as secrets and redirect URIs.
-4. This script will recreate the secrets with a start day of the time the script was ran, and will expire 6 months after creation.
+
+## Notes
+Ensure that you have the necessary permissions to create and manage app registrations in the target tenant.
+The script sets the StartDateTime for the PasswordCredentials to today's date and the EndDateTime to 6 months from the start date.
+The publisherDomain property is read-only and cannot be set during app creation.
+The script now handles API permissions by including the requiredResourceAccess property.
 5. Converts properties to the correct types as required by the Microsoft Graph API.
 6. Creates a new app registration in the target tenant with the extracted properties.
 7. Outputs the details of the new app registration.
