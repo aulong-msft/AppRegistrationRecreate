@@ -45,4 +45,12 @@ The script performs the following steps:
 - The publisherDomain property is read-only and cannot be set during app creation.
 - The script now handles API permissions by including the requiredResourceAccess property.
 - If your app uses certificates for authentication, you will need to handle the keyCredentials property properly. This might involve uploading certificates to the new app registration.
+- The script includes the preAuthorizedApplications property, but you might need to ensure that these applications are also registered and authorized in the target tenant.
+- If your app uses optional claims, you will need to include the optionalClaims property in the script.
+- If your app has specific branding settings (like a logo), you might need to handle these settings separately.
+- The script currently handles web redirect URIs, but if your app supports other platforms (like mobile or SPA), you will need to include those redirect URIs as well.
+- Ensure that all app roles and OAuth2 permission scopes are correctly set up in the new tenant.
+- If your app has specific user or group assignments, you will need to recreate these assignments in the new tenant.
+- If there are any conditional access policies associated with the app, you will need to recreate these policies in the new tenant.
+- f your app is configured to be multi-tenant, ensure that the necessary settings are applied in the new tenant.
 
