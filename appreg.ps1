@@ -45,14 +45,30 @@ foreach ($cred in $manifest.passwordCredentials) {
 # Extract redirect URIs
 $redirectUris = $manifest.web.redirectUris
 
+# Convert the requiredResourceAccess property to the correct type
+$requiredResourceAccess = @()
+foreach ($resource in $manifest.requiredResourceAccess) {
+    $resourceAccess = @()
+    foreach ($access in $resource.resourceAccess) {
+        $resourceAccess += [Microsoft.Graph.PowerShell.Models.IMicrosoftGraphResourceAccess]@{
+            Id = $access.id
+            Type = $access.type
+        }
+    }
+    $requiredResourceAccess += [Microsoft.Graph.PowerShell.Models.IMicrosoftGraphRequiredResourceAccess]@{
+        ResourceAppId = $resource.resourceAppId
+        ResourceAccess = $resourceAccess
+    }
+}
+
 $appRoles = $manifest.appRoles
 $keyCredentials = $manifest.keyCredentials
 
 # Create a new app registration in the target tenant
 if ($appDescription) {
-    $newApp = New-MgApplication -DisplayName $appName -Description $appDescription -SignInAudience $signInAudience -Api $api -AppRoles $appRoles -Info $info -KeyCredentials $keyCredentials -PasswordCredentials $passwordCredentials -Web @{ RedirectUris = $redirectUris }
+    $newApp = New-MgApplication -DisplayName $appName -Description $appDescription -SignInAudience $signInAudience -Api $api -AppRoles $appRoles -Info $info -KeyCredentials $keyCredentials -PasswordCredentials $passwordCredentials -Web @{ RedirectUris = $redirectUris } -RequiredResourceAccess $requiredResourceAccess
 } else {
-    $newApp = New-MgApplication -DisplayName $appName -SignInAudience $signInAudience -Api $api -AppRoles $appRoles -Info $info -KeyCredentials $keyCredentials -PasswordCredentials $passwordCredentials -Web @{ RedirectUris = $redirectUris }
+    $newApp = New-MgApplication -DisplayName $appName -SignInAudience $signInAudience -Api $api -AppRoles $appRoles -Info $info -KeyCredentials $keyCredentials -PasswordCredentials $passwordCredentials -Web @{ RedirectUris = $redirectUris } -RequiredResourceAccess $requiredResourceAccess
 }
 
 # Output the new app registration details
