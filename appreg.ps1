@@ -17,8 +17,6 @@ $api = @{
     acceptMappedClaims = $manifest.api.acceptMappedClaims
     knownClientApplications = $manifest.api.knownClientApplications
     requestedAccessTokenVersion = $manifest.api.requestedAccessTokenVersion
-    oauth2PermissionScopes = $manifest.api.oauth2PermissionScopes
-    preAuthorizedApplications = $manifest.api.preAuthorizedApplications
 }
 
 # Convert the Info property to the correct type
@@ -61,7 +59,19 @@ foreach ($resource in $manifest.requiredResourceAccess) {
     }
 }
 
-$appRoles = $manifest.appRoles
+# Convert the AppRoles property to the correct type
+$appRoles = @()
+foreach ($role in $manifest.appRoles) {
+    $appRoles += [Microsoft.Graph.PowerShell.Models.IMicrosoftGraphAppRole]@{
+        Id = $role.id
+        DisplayName = $role.displayName
+        Description = $role.description
+        Value = $role.value
+        AllowedMemberTypes = $role.allowedMemberTypes
+        IsEnabled = $role.isEnabled
+    }
+}
+
 $keyCredentials = $manifest.keyCredentials
 
 # Create a new app registration in the target tenant
