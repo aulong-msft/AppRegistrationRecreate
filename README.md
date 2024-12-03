@@ -44,4 +44,5 @@ The script performs the following steps:
 - The script sets the StartDateTime for the PasswordCredentials to today's date and the EndDateTime to 6 months from the start date.
 - The publisherDomain property is read-only and cannot be set during app creation.
 - The script now handles API permissions by including the requiredResourceAccess property.
+- If your app uses certificates for authentication, you will need to handle the keyCredentials property properly. This might involve uploading certificates to the new app registration.
 
