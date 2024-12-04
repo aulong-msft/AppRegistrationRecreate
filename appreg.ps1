@@ -2,7 +2,7 @@
 Install-Module Microsoft.Graph -Scope CurrentUser
 
 # Connect to the tenant
-Connect-MgGraph -Scopes "Application.ReadWrite.All" -TenantId "TENANT ID"
+Connect-MgGraph -Scopes "Application.ReadWrite.All" -TenantId "DESTINATION TENANT ID"
 
 # Read the manifest JSON file
 $manifest = Get-Content -Path "PATH TO OLD APP MANIFEST" -Raw | ConvertFrom-Json
