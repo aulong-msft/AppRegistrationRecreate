@@ -19,7 +19,7 @@ This PowerShell script allows you to recreate an app registration from one tenan
 1. Navigate to your old app registration -> Manage -> Manifest and download that manifest file for your application registration you want to recreate.
    
 1. Update the following fields in the PowerShell script:
- - "TENANT ID"
+ - "DESTINATION TENANT ID"
  - "PATH TO OLD APP MANIFEST"
 
 1. Run the script:
